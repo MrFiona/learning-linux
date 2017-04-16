@@ -1,0 +1,15 @@
+Linux内核三部曲 带你迅速入门 
+本学习资料来源于您身边的高端IT在线培训[英本科技] http://www.ingben.com
+Linux内核学习介绍，带你了解linux内核的就业前景，学习阶段分析，为你提前做好规划;
+Linux内核介绍及编译初步带你领略linux内核的神奇奥秘；
+亲爱的朋友你准备好了吗？一切的一切开始于以下三节免费视频课程！
+
+01.Linux内核学习入门        http://v.youku.com/v_show/id_XNjc1NzEzODAw.html
+02.Linux内核介绍            http://v.youku.com/v_show/id_XNjc1NzE0OTAw.html
+03.Linux内核编译            http://v.youku.com/v_show/id_XNjc1NzE1NDQ0.html
+
+
+精品Linux内核课程110课时，讲师一对一在线服务，火爆抢购价600元
+高级Linux虚拟化课程火爆抢购价1000元
+高级Linux网络课程火爆抢购价1000元
+购买两门以上课程尊享九折优惠。更多优惠活动请咨询QQ1094242843  2789478008

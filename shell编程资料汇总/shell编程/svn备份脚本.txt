@@ -1,0 +1,45 @@
+#!/bin/bash
+
+if [ $# != 3 ]; then
+    echo "usage: svn-backup ['full'|'part'] [svn root] [backup dir root]"
+    echo "example 1: svn-backup full /opt/svn-repos /opt/svn-backup"
+    exit
+fi
+
+mode=$1
+svn_root=$2
+backup_root=$3
+
+for project in `ls -F $svn_root | grep /$ | sed 's/\///g'`
+do
+    project_dir="$svn_root/$project"
+    backup_dir="$backup_root/$project"
+    backup_info="$project_dir/backup_info"
+    last_version=`svnlook youngest $project_dir`
+
+    if [ ! -f $backup_info ]; then
+        echo 0 > $backup_info
+    fi
+    
+    last_backup_version=`cat $backup_info`
+    
+    if [ $mode != 'full' ] && [ $last_backup_version == $last_version ]; then
+        echo "`date +"%F %R:%S"`  '$project' nothing to do"
+    else
+        if [ $mode == 'full' ] || [ $last_backup_version == '0' ] || [ ! -d $backup_dir ]; then
+            echo "`date +"%F %R:%S"`  '$project' full backup"
+            rm -rf $backup_dir
+            svnadmin hotcopy $project_dir $backup_dir
+            last_version=`svnlook youngest $backup_dir`
+        else
+            echo "`date +"%F %R:%S"`  '$project' version $last_backup_version to $last_version"
+            backup_file="$backup_dir/v$last_backup_version-$last_version.bk"
+            svnadmin dump --incremental -q -r $last_backup_version:$last_version $project_dir > $backup_file
+        fi
+
+        echo $last_version > $backup_info
+    fi
+done
+
+echo "`date +"%F %R:%S"`  done"
+echo ""

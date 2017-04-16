@@ -1,0 +1,8 @@
+su - root
+
+mkdir /mnt/zhang
+
+cp -r /media/V....tar.gz压缩包 /mnt/zhang
+
+在/mnt/zhang下解压压缩包并安装
+
